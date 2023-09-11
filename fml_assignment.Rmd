@@ -1,0 +1,74 @@
+---
+title: "Fundamentals of Machine Learning Assignment"
+author: "Supriya Mattapelly "
+date: "2023-09-10"
+output: pdf_document
+---
+
+------------------------------------------------------------------------
+
+dataset : https://www.kaggle.com/code/milanzdravkovic/pharma-sales-data-analysis-and-forecasting/input?select=salesmonthly.csv
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+
+```{r}
+
+library(readr)
+salesmonthly <- read_csv("C:/Users/Supriya mattapelly.000/Downloads/salesmonthly.csv")
+summary(salesmonthly)
+
+```
+
+```{r}
+
+# Transforming a variable
+
+salesmonthly$M01AB_squared <- salesmonthly$M01AB^2
+
+```
+
+```{r}
+
+#histogram plot of N02BA variable
+
+hist(salesmonthly$N02BA, 
+     main = "Histogram of N02BA", 
+     xlab = "N02BA", 
+     ylab = "Frequency")  
+
+```
+
+```{r}
+#scatterplot
+
+library(ggplot2)
+
+
+ggplot(salesmonthly, aes(x = M01AB, y = M01AE)) + geom_point() + labs(title = "Scatterplot of M01AB vs. M01AE", x = "M01AB", y = "M01AE")
+
+```
+
+```{r}
+
+
+mean_N02BA <- mean(salesmonthly$N02BA)
+
+median_N02BA <- median(salesmonthly$N02BA)
+
+mode_N02BA <- as.numeric(names(sort(table(salesmonthly$N02BA), decreasing = TRUE)[1]))
+
+
+mean_N02BA
+median_N02BA
+mode_N02BA
+
+
+
+
+```
